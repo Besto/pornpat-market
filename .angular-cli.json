@@ -19,9 +19,17 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.scss"
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "assets/css/material-dashboard-v2.css",
+        "assets/css/demo.css",
+        "styles.scss"        
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+        "assets/js/material.min.js",
+        "assets/js/jquery.datatables.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
