@@ -28,7 +28,13 @@
         "../node_modules/bootstrap/dist/js/bootstrap.min.js",
         "assets/js/material.min.js",
         "assets/js/jquery.datatables.js",
-        "assets/js/jquery.select-bootstrap.js"
+        "assets/js/jquery.select-bootstrap.js",
+        "assets/js/chartist.min.js",
+        "assets/js/arrive.min.js",
+        "assets/js/perfect-scrollbar.jquery.min.js",
+        "assets/js/bootstrap-notify.js",
+        "assets/js/material-dashboard-v2.js"
+
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

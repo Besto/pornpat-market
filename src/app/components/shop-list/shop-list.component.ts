@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 declare var $: any;
 
@@ -15,7 +16,7 @@ export class ShopListComponent implements OnInit {
   showNumberOfShop = false;
   datatable;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -33,4 +34,7 @@ export class ShopListComponent implements OnInit {
     this.datatable.columns('.number_of_shop').visible( this.showNumberOfShop );
   }
 
+  showShopDetail(id) {
+    this.router.navigate(['shop-details/' + id]);
+  }
 }

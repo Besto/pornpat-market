@@ -9,6 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import { ShopListComponent } from './components/shop-list/shop-list.component';
 import { FormsModule } from '@angular/forms';
+import { ShopDetailsComponent } from './components/shop-details/shop-details.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 const appRoutes: Routes = [
   { path: '', component: DashboardComponent },
@@ -24,7 +26,9 @@ const appRoutes: Routes = [
     ReportComponent,
     DashboardComponent,
     ShopComponent,
-    ShopListComponent
+    ShopListComponent,
+    ShopDetailsComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
