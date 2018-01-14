@@ -36,7 +36,6 @@ export class ReportComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    console.log('ngAfterViewInit');
     $('#datatables').DataTable({
         "pagingType": "full_numbers",
         "lengthMenu": [
@@ -50,6 +49,8 @@ export class ReportComponent implements OnInit {
         }
 
     });
+
+    $('.selectpicker').selectpicker();
 
 
     // var table = $('#datatables').DataTable();

@@ -20,15 +20,15 @@
       "prefix": "app",
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "assets/css/material-dashboard-v2.css",
-        "assets/css/demo.css",
+        "assets/css/material-dashboard-v2.css",        
         "styles.scss"        
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
         "../node_modules/bootstrap/dist/js/bootstrap.min.js",
         "assets/js/material.min.js",
-        "assets/js/jquery.datatables.js"
+        "assets/js/jquery.datatables.js",
+        "assets/js/jquery.select-bootstrap.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
