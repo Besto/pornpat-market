@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 declare var $: any;
 
@@ -15,8 +15,14 @@ export class ShopListComponent implements OnInit {
   showShopType = false;
   showNumberOfShop = false;
   datatable;
+  shopID;
 
-  constructor(private router: Router) { }
+  constructor(private router: ActivatedRoute) {
+    const sub = this.router.params
+                  .subscribe(params => {
+                    this.shopID = params['id'];
+                  });
+  }
 
   ngOnInit() {
   }
@@ -27,7 +33,6 @@ export class ShopListComponent implements OnInit {
   }
 
   refreshTable() {
-    console.log('refreshTable ' + this.showAddress + ' ' + this.showContact);
     this.datatable.columns('.address').visible( this.showAddress );
     this.datatable.columns('.contact').visible( this.showContact );
     this.datatable.columns('.shop_type').visible( this.showShopType );
@@ -35,6 +40,7 @@ export class ShopListComponent implements OnInit {
   }
 
   showShopDetail(id) {
-    this.router.navigate(['shop-details/' + id]);
+    $('#shop-details-tab').click();
+    this.shopID = id;
   }
 }

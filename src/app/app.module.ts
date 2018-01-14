@@ -7,15 +7,12 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
-import { ShopListComponent } from './components/shop-list/shop-list.component';
 import { FormsModule } from '@angular/forms';
-import { ShopDetailsComponent } from './components/shop-details/shop-details.component';
-import { PaymentComponent } from './components/payment/payment.component';
 
 const appRoutes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'shop', component: ShopComponent },
+  { path: 'shop', loadChildren: 'app/modules/shop/shop.module#ShopModule'},
   { path: 'report', component: ReportComponent },
   { path: '**', redirectTo: 'home'}
 ];
@@ -24,11 +21,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     ReportComponent,
-    DashboardComponent,
-    ShopComponent,
-    ShopListComponent,
-    ShopDetailsComponent,
-    PaymentComponent
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

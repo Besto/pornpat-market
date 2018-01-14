@@ -1,23 +1,13 @@
-/*!
-
- =========================================================
- * Material Dashboard - v1.2.0
- =========================================================
-
- * Product Page: http://www.creative-tim.com/product/material-dashboard
- * Copyright 2017 Creative Tim (http://www.creative-tim.com)
- * Licensed under MIT (https://github.com/creativetimofficial/material-dashboard/blob/master/LICENSE.md)
-
- =========================================================
-
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
- */
+/*! =========================================================
+ *
+ * Material Dashboard PRO - V1.2.1
+ *
+ * ========================================================= */
 
 (function() {
     isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
 
-    if (isWindows) {
+    if (isWindows && !$('body').hasClass('sidebar-mini')) {
         // if we are on windows OS we activate the perfectScrollbar function
         $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
 
@@ -27,6 +17,7 @@
     }
 })();
 
+var breakCards = true;
 
 var searchVisible = 0;
 var transparent = true;
@@ -53,20 +44,83 @@ $(document).ready(function() {
 
     $.material.init();
 
-    window_width = $(window).width();
-
     md.initSidebarsCheck();
+
+    if ($('body').hasClass('sidebar-mini')) {
+        md.misc.sidebar_mini_active = true;
+    }
+
+    window_width = $(window).width();
 
     // check if there is an image set for the sidebar's background
     md.checkSidebarImage();
 
+    md.initMinimizeSidebar();
+
+    //    Activate bootstrap-select
+    if ($(".selectpicker").length != 0) {
+        $(".selectpicker").selectpicker();
+    }
+
     //  Activate the tooltips
     $('[rel="tooltip"]').tooltip();
+
+    //removed class label and label-color from tag span and replaced with data-color
+    var tagClass = $('.tagsinput').data('color');
+
+    $('.tagsinput').tagsinput({
+        tagClass: ' tag-' + tagClass + ' '
+    });
+
+    //    Activate bootstrap-select
+    $(".select").dropdown({
+        "dropdownClass": "dropdown-menu",
+        "optionClass": ""
+    });
 
     $('.form-control').on("focus", function() {
         $(this).parent('.input-group').addClass("input-group-focus");
     }).on("blur", function() {
         $(this).parent(".input-group").removeClass("input-group-focus");
+    });
+
+
+    if (breakCards == true) {
+        // We break the cards headers if there is too much stress on them :-)
+        $('[data-header-animation="true"]').each(function() {
+            var $fix_button = $(this)
+            var $card = $(this).parent('.card');
+
+            $card.find('.fix-broken-card').click(function() {
+                console.log(this);
+                var $header = $(this).parent().parent().siblings('.card-header, .card-image');
+
+                $header.removeClass('hinge').addClass('fadeInDown');
+
+                $card.attr('data-count', 0);
+
+                setTimeout(function() {
+                    $header.removeClass('fadeInDown animate');
+                }, 480);
+            });
+
+            $card.mouseenter(function() {
+                var $this = $(this);
+                hover_count = parseInt($this.attr('data-count'), 10) + 1 || 0;
+                $this.attr("data-count", hover_count);
+
+                if (hover_count >= 20) {
+                    $(this).children('.card-header, .card-image').addClass('hinge animated');
+                }
+            });
+        });
+    }
+
+    // remove class has-error for checkbox validation
+    $('input[type="checkbox"][required="true"], input[type="radio"][required="true"]').on('click', function() {
+        if ($(this).hasClass('error')) {
+            $(this).closest('div').removeClass('has-error');
+        }
     });
 
 });
@@ -88,27 +142,42 @@ $(document).on('click', '.navbar-toggle', function() {
             $toggle.addClass('toggled');
         }, 430);
 
-        div = '<div id="bodyClick"></div>';
-        $(div).appendTo('body').click(function() {
+        var $layer = $('<div class="close-layer"></div>');
+
+        if ($('body').find('.main-panel').length != 0) {
+            $layer.appendTo(".main-panel");
+
+        } else if (($('body').hasClass('off-canvas-sidebar'))) {
+            $layer.appendTo(".wrapper-full-page");
+        }
+
+        setTimeout(function() {
+            $layer.addClass('visible');
+        }, 100);
+
+        $layer.click(function() {
             $('html').removeClass('nav-open');
             mobile_menu_visible = 0;
+
+            $layer.removeClass('visible');
+
             setTimeout(function() {
+                $layer.remove();
                 $toggle.removeClass('toggled');
-                $('#bodyClick').remove();
-            }, 550);
+
+            }, 400);
         });
 
         $('html').addClass('nav-open');
         mobile_menu_visible = 1;
 
     }
+
 });
 
 // activate collapse right menu when the windows is resized
 $(window).resize(function() {
     md.initSidebarsCheck();
-    // reset the seq for charts drawing animations
-    seq = seq2 = 0;
 });
 
 md = {
@@ -123,9 +192,67 @@ md = {
         image_src = $sidebar.data('image');
 
         if (image_src !== undefined) {
-            sidebar_container = '<div class="sidebar-background" style="background-image: url(' + image_src + ') "/>'
+            sidebar_container = '<div class="sidebar-background" style="background-image: url(' + image_src + ') "/>';
             $sidebar.append(sidebar_container);
         }
+    },
+
+    initSliders: function() {
+        // Sliders for demo purpose in refine cards section
+        var slider = document.getElementById('sliderRegular');
+
+        noUiSlider.create(slider, {
+            start: 40,
+            connect: [true, false],
+            range: {
+                min: 0,
+                max: 100
+            }
+        });
+
+        var slider2 = document.getElementById('sliderDouble');
+
+        noUiSlider.create(slider2, {
+            start: [20, 60],
+            connect: true,
+            range: {
+                min: 0,
+                max: 100
+            }
+        });
+    },
+
+    initSidebarsCheck: function() {
+        if ($(window).width() <= 991) {
+            if ($sidebar.length != 0) {
+                md.initRightMenu();
+            }
+        }
+    },
+
+    initMinimizeSidebar: function() {
+
+        $('#minimizeSidebar').click(function() {
+            var $btn = $(this);
+
+            if (md.misc.sidebar_mini_active == true) {
+                $('body').removeClass('sidebar-mini');
+                md.misc.sidebar_mini_active = false;
+            } else {
+                $('body').addClass('sidebar-mini');
+                md.misc.sidebar_mini_active = true;
+            }
+
+            // we simulate the window Resize so the charts will get updated in realtime.
+            var simulateWindowResize = setInterval(function() {
+                window.dispatchEvent(new Event('resize'));
+            }, 180);
+
+            // we stop the simulation of Window Resize after the animations are completed
+            setTimeout(function() {
+                clearInterval(simulateWindowResize);
+            }, 1000);
+        });
     },
 
     checkScrollForTransparentNavbar: debounce(function() {
@@ -142,13 +269,6 @@ md = {
         }
     }, 17),
 
-    initSidebarsCheck: function() {
-        if ($(window).width() <= 991) {
-            if ($sidebar.length != 0) {
-                md.initRightMenu();
-            }
-        }
-    },
 
     initRightMenu: debounce(function() {
         $sidebar_wrapper = $('.sidebar-wrapper');
@@ -192,6 +312,38 @@ md = {
         }
     }, 200),
 
+
+    // initBootstrapNavbarMenu: debounce(function(){
+    //
+    //     if(!bootstrap_nav_initialized){
+    //         $navbar = $('nav').find('.navbar-collapse').first().clone(true);
+    //
+    //         nav_content = '';
+    //         mobile_menu_content = '';
+    //
+    //         //add the content from the regular header to the mobile menu
+    //         $navbar.children('ul').each(function(){
+    //             content_buff = $(this).html();
+    //             nav_content = nav_content + content_buff;
+    //         });
+    //
+    //         nav_content = '<ul class="nav nav-mobile-menu">' + nav_content + '</ul>';
+    //
+    //         $navbar.html(nav_content);
+    //         $navbar.addClass('off-canvas-sidebar');
+    //
+    //         // append it to the body, so it will come from the right side of the screen
+    //         $('body').append($navbar);
+    //
+    //         $toggle = $('.navbar-toggle');
+    //
+    //         $navbar.find('a').removeClass('btn btn-round btn-default');
+    //         $navbar.find('button').removeClass('btn-round btn-fill btn-info btn-primary btn-success btn-danger btn-warning btn-neutral');
+    //         $navbar.find('button').addClass('btn-simple btn-block');
+    //
+    //         bootstrap_nav_initialized = true;
+    //     }
+    // }, 500),
 
     startAnimationForLineChart: function(chart) {
 
@@ -262,3 +414,17 @@ function debounce(func, wait, immediate) {
         if (immediate && !timeout) func.apply(context, args);
     };
 };
+
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-46172202-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+})();

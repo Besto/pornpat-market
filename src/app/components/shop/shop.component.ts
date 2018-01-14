@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 declare var $: any;
 
@@ -9,7 +10,9 @@ declare var $: any;
 })
 export class ShopComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: ActivatedRoute) {
+
+  }
 
   ngOnInit() {
   }

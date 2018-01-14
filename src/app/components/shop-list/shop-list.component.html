@@ -26,37 +26,45 @@
     </div>         
     <div class="row">
         <div class="col-md-6">                
-            <div class="col-md-3">
-                <label>
-                    <input type="checkbox" 
-                           name="terms"
-                           [(ngModel)]="showAddress"
-                           (change)="refreshTable()">ที่อยู่
-                </label>
+            <div class="col-md-3">                                            
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" 
+                            name="terms"
+                            [(ngModel)]="showAddress"
+                            (change)="refreshTable()">ที่อยู่
+                    </label>
+                </div>
             </div>
             <div class="col-md-3">
-                <label>
-                    <input type="checkbox" 
-                           name="terms"
-                           [(ngModel)]="showContact"
-                           (change)="refreshTable()">ติดต่อ
-                </label>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" 
+                                name="terms"
+                                [(ngModel)]="showContact"
+                                (change)="refreshTable()">ติดต่อ
+                    </label>
+                </div>
             </div>
             <div class="col-md-3">
-                <label>
-                    <input type="checkbox" 
-                           name="terms"
-                           [(ngModel)]="showShopType"
-                           (change)="refreshTable()">ถัง/รถเข็น
-                </label>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" 
+                            name="terms"
+                            [(ngModel)]="showShopType"
+                            (change)="refreshTable()">ถัง/รถเข็น
+                    </label>
+                </div>
             </div>
             <div class="col-md-3">
-                <label>
-                    <input type="checkbox" 
-                           name="terms"
-                           [(ngModel)]="showNumberOfShop"
-                           (change)="refreshTable()">จำนวนแผง
-                </label>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" 
+                            name="terms"
+                            [(ngModel)]="showNumberOfShop"
+                            (change)="refreshTable()">จำนวนแผง
+                    </label>
+                </div>
             </div>
         </div>
         <div class="col-md-6 text-right">
