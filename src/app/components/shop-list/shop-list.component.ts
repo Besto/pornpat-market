@@ -28,7 +28,7 @@ export class ShopListComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.datatable = $('#datatables').DataTable();
+    this.datatable = $('#shoplist-datatables').DataTable();
     this.refreshTable();
   }
 
