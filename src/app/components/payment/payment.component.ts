@@ -40,4 +40,7 @@ export class PaymentComponent implements OnInit {
     $('#payment-datatables').DataTable();
   }
 
+  showShopDetail(id) {
+
+  }
 }
