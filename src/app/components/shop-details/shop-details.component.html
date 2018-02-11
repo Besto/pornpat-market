@@ -3,157 +3,180 @@
     
   </div>
 </div>
-<div class="row">
-  <div class="col-md-3">
-    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-        <div class="fileinput-new thumbnail">
-          <img src="assets/img/image_placeholder.jpg" alt="...">      
-        </div>
-        <div class="fileinput-preview fileinput-exists thumbnail img-circle"></div>
-        <div>
-            <span class="btn btn-round btn-rose btn-file">
-                <span class="fileinput-new">Add Photo</span>
-                <span class="fileinput-exists">Change</span>
-                <input type="file" name="..." />
-            </span>
-            <br />
-            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
-        </div>
-    </div>
-  </div>
-  <div class="col-md-9">
-    <div class="row">
-        <label class="col-md-2">รหัสแผง</label>
-        <div class="col-md-3">
-          <div class="form-group label-floating is-empty">
-            <label class="control-label"></label>
-            <input type="text" class="form-control" placeholder="รหัสแผง">
-            <span class="material-input"></span>
+<form class="form-horizontal" [formGroup]="shopDetailForm">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+          <div class="fileinput-new thumbnail">
+            <img src="assets/img/image_placeholder.jpg" alt="...">      
           </div>
-        </div>
-        <label class="col-md-2">สถานะ</label>
-        <div class="col-md-3">
-          <div class="form-group label-floating is-empty">
-            <label class="control-label"></label>
-            <input type="text" class="form-control" placeholder="สถานะ">
-            <span class="material-input"></span>
+          <div class="fileinput-preview fileinput-exists thumbnail img-circle"></div>
+          <div>
+              <span class="btn btn-round btn-rose btn-file">
+                  <span class="fileinput-new">Add Photo</span>
+                  <span class="fileinput-exists">Change</span>
+                  <input type="file" name="..." />
+              </span>
+              <br />
+              <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
           </div>
-        </div>
-    </div>
-    <div class="row">
-        <label class="col-md-2">ชื่อ</label>
-        <div class="col-md-3">
-          <div class="form-group label-floating is-empty">
-            <label class="control-label"></label>
-            <input type="text" class="form-control" placeholder="ชื่อ">
-            <span class="material-input"></span>
-          </div>
-        </div>
-        <label class="col-md-2">นามสกุล</label>
-        <div class="col-md-3">
-          <div class="form-group label-floating is-empty">
-            <label class="control-label"></label>
-            <input type="text" class="form-control" placeholder="นามสกุล">
-            <span class="material-input"></span>
-          </div>
-        </div>
-    </div>
-    <div class="row">
-        <label class="col-md-2">ประเภทแผง</label>
-        <div class="col-md-3">
-          <div class="form-group label-floating is-empty">
-            <label class="control-label"></label>
-            <input type="text" class="form-control" placeholder="ประเภทแผง">
-            <span class="material-input"></span>
-          </div>
-        </div>
-        <label class="col-md-2">จำนวน</label>
-        <div class="col-md-3">
-          <div class="form-group label-floating is-empty">
-            <label class="control-label"></label>
-            <input type="text" class="form-control" placeholder="จำนวน">
-            <span class="material-input"></span>
-          </div>
-        </div>
-    </div>
-    <div class="row">
-        <label class="col-md-2">หมวด</label>
-        <div class="col-md-3">
-          <div class="form-group label-floating is-empty">
-            <label class="control-label"></label>
-            <input type="text" class="form-control" placeholder="หมวด">
-            <span class="material-input"></span>
-          </div>
-        </div>
-        <label class="col-md-2">สินค้า</label>
-        <div class="col-md-3">
-          <div class="form-group label-floating is-empty">
-            <label class="control-label"></label>
-            <input type="text" class="form-control" placeholder="สินค้า">
-            <span class="material-input"></span>
-          </div>
-        </div>
-    </div>
-    <div class="row">
-        <label class="col-md-2">ที่อยู่</label>
-        <div class="col-md-9">
-          <div class="form-group label-floating is-empty">
-            <label class="control-label"></label>
-            <input type="text" class="form-control" placeholder="ที่อยู่">
-            <span class="material-input"></span>
-          </div>
-        </div>        
-    </div>
-    <div class="row">
-        <label class="col-md-2">โทร</label>
-        <div class="col-md-3">
-          <div class="form-group label-floating is-empty">
-            <label class="control-label"></label>
-            <input type="text" class="form-control" placeholder="โทร">
-            <span class="material-input"></span>
-          </div>
-        </div>
-        <label class="col-md-2">อีเมล</label>
-        <div class="col-md-3">
-          <div class="form-group label-floating is-empty">
-            <label class="control-label"></label>
-            <input type="text" class="form-control" placeholder="อีเมล">
-            <span class="material-input"></span>
-          </div>
-        </div>
-    </div>
-    <div class="row">
-        <label class="col-md-2">Line ID</label>
-        <div class="col-md-3">
-          <div class="form-group label-floating is-empty">
-            <label class="control-label"></label>
-            <input type="text" class="form-control" placeholder="Line ID">
-            <span class="material-input"></span>
-          </div>
-        </div>
-        <label class="col-md-2">ที่เก็บของ</label>
-        <div class="col-md-3">
-          <div class="form-group label-floating is-empty">
-            <label class="control-label"></label>
-            <input type="text" class="form-control" placeholder="ที่เก็บของ">
-            <span class="material-input"></span>
-          </div>
-        </div>
-    </div>
-    <div class="row">
-        <label class="col-md-2">Size</label>
-        <div class="col-md-2">
-          <div class="form-group label-floating is-empty">
-            <label class="control-label"></label>
-            <input type="text" class="form-control" placeholder="Size">
-            <span class="material-input"></span>
-          </div>
-        </div>        
-    </div>
-    <div class="row">
-      <div class="col-md-11 text-right">
-          <button type="submit" class="btn btn-fill btn-rose">Save<div class="ripple-container"></div></button>
       </div>
     </div>
+    <div class="col-md-9">
+      <div class="row">
+          <label class="col-md-2">รหัสแผง</label>
+          <div class="col-md-3">
+            <div class="form-group label-floating is-empty">
+              <label class="control-label"></label>
+              <input type="text" class="form-control" placeholder="รหัสแผง" formControlName="id">
+              <span class="material-input"></span>
+            </div>
+          </div>
+          <label class="col-md-2">สถานะ</label>
+          <div class="col-md-3">
+            <div class="form-group label-floating is-empty">
+              <label class="control-label"></label>
+              <input type="text" class="form-control" placeholder="สถานะ" formControlName="status">
+              <span class="material-input"></span>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+          <label class="col-md-2">ชื่อ</label>
+          <div class="col-md-3">
+            <div class="form-group label-floating is-empty">
+              <label class="control-label"></label>
+              <input type="text" class="form-control" placeholder="ชื่อ" formControlName="firstname">
+              <span class="material-input"></span>
+            </div>
+          </div>
+          <label class="col-md-2">นามสกุล</label>
+          <div class="col-md-3">
+            <div class="form-group label-floating is-empty">
+              <label class="control-label"></label>
+              <input type="text" class="form-control" placeholder="นามสกุล" formControlName="lastname">
+              <span class="material-input"></span>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+          <label class="col-md-2">ประเภทแผง</label>
+          <div class="col-md-3">
+            <div class="form-group label-floating is-empty">
+              <label class="control-label"></label>
+              <input type="text" class="form-control" placeholder="ประเภทแผง" formControlName="category">
+              <span class="material-input"></span>
+            </div>
+          </div>
+          <label class="col-md-2">จำนวน</label>
+          <div class="col-md-3">
+            <div class="form-group label-floating is-empty">
+              <label class="control-label"></label>
+              <input type="text" class="form-control" placeholder="จำนวน" formControlName="lastname">
+              <span class="material-input"></span>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+          <label class="col-md-2">หมวด</label>
+          <div class="col-md-3">
+            <div class="form-group label-floating is-empty">
+              <label class="control-label"></label>
+              <input type="text" class="form-control" placeholder="หมวด" formControlName="group">
+              <span class="material-input"></span>
+            </div>
+          </div>
+          <label class="col-md-2">สินค้า</label>
+          <div class="col-md-3">
+            <div class="form-group label-floating is-empty">
+              <label class="control-label"></label>
+              <input type="text" class="form-control" placeholder="สินค้า" formControlName="product">
+              <span class="material-input"></span>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+          <label class="col-md-2">ที่อยู่</label>
+          <div class="col-md-9">
+            <div class="form-group label-floating is-empty">
+              <label class="control-label"></label>
+              <input type="text" class="form-control" placeholder="ที่อยู่" formControlName="address">
+              <span class="material-input"></span>
+            </div>
+          </div>        
+      </div>
+      <div class="row">
+          <label class="col-md-2">โทร</label>
+          <div class="col-md-3">
+            <div class="form-group label-floating is-empty">
+              <label class="control-label"></label>
+              <input type="text" class="form-control" placeholder="โทร" formControlName="tel">
+              <span class="material-input"></span>
+            </div>
+          </div>
+          <label class="col-md-2">อีเมล</label>
+          <div class="col-md-3">
+            <div class="form-group label-floating is-empty">
+              <label class="control-label"></label>
+              <input type="text" class="form-control" placeholder="อีเมล" formControlName="email">
+              <span class="material-input"></span>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+          <label class="col-md-2">Line ID</label>
+          <div class="col-md-3">
+            <div class="form-group label-floating is-empty">
+              <label class="control-label"></label>
+              <input type="text" class="form-control" placeholder="Line ID" formControlName="lineID">
+              <span class="material-input"></span>
+            </div>
+          </div>
+          <label class="col-md-2">ที่เก็บของ</label>
+          <div class="col-md-3">
+            <div class="form-group label-floating is-empty">
+              <label class="control-label"></label>
+              <input type="text" class="form-control" placeholder="ที่เก็บของ" formControlName="storage">
+              <span class="material-input"></span>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+          <label class="col-md-2">ขนาด</label>
+          <div class="col-md-2">
+            <div class="form-group label-floating is-empty">
+              <label class="control-label"></label>
+              <input type="text" class="form-control" placeholder="ขนาด" formControlName="size">
+              <span class="material-input"></span>
+            </div>
+          </div>
+          <div formGroupName="position">
+            <label class="col-md-offset-1 col-md-2">ตำแหน่งแผง<br/>แถว/คอลัมน์</label>
+            <div class="col-md-2">
+              <div class="form-group label-floating is-empty">
+                <label class="control-label"></label>
+                <input type="text" class="form-control" placeholder="Row" formControlName="row">
+                <span class="material-input"></span>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group label-floating is-empty">
+                <label class="control-label"></label>
+                <input type="text" class="form-control" placeholder="Column" formControlName="column">
+                <span class="material-input"></span>
+              </div>
+            </div>    
+          </div> 
+      </div>
+      <div class="row">
+          
+      </div>
+      <div class="row">
+        <div class="col-md-11 text-right">
+            <button type="submit" class="btn btn-fill btn-rose" (click)="saveShopDetail()">
+              Save<div class="ripple-container"></div>
+            </button>
+        </div>
+      </div>
   </div>
 </div>

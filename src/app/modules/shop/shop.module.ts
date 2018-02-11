@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ShopDetailsComponent } from '../../components/shop-details/shop-details.component';
 import { ShopListComponent } from '../../components/shop-list/shop-list.component';
 import { ShopComponent } from '../../components/shop/shop.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { PaymentComponent } from '../../components/payment/payment.component';
 
@@ -16,6 +16,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
   declarations: [

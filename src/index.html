@@ -7,8 +7,22 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
 </head>
 <body>
   <app-root></app-root>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCOU0bLJEipDzhrATU0H36yMO0NZ3ttP4k",
+      authDomain: "pornpat-market.firebaseapp.com",
+      databaseURL: "https://pornpat-market.firebaseio.com",
+      projectId: "pornpat-market",
+      storageBucket: "pornpat-market.appspot.com",
+      messagingSenderId: "1006609020942"
+    };
+    firebase.initializeApp(config);
+  </script>
 </body>
 </html>

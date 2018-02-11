@@ -8,8 +8,12 @@
         text-align: center;
     }
     .market-position{
+        cursor: pointer;
         width: 30px;
         height: 30px;
         border: 1px solid black;
+    }
+    .market-position:hover{
+        background-color: gray;
     }
 }

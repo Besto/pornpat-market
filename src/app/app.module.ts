@@ -7,7 +7,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: '', component: DashboardComponent },
@@ -26,6 +26,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes
     )

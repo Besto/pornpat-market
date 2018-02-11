@@ -25,6 +25,11 @@ export class ReportComponent implements OnInit {
     { 'id' : 12 , 'name': 'December'}
   ];
 
+  totalSummaryRevenue = 10000;
+  totalSummaryRevenueLastMonth = 20000;
+  showReport = '';
+  reportType = '';
+
   constructor() { }
 
   ngOnInit() {
@@ -36,47 +41,42 @@ export class ReportComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    $('#datatables').DataTable({
-        "pagingType": "full_numbers",
-        "lengthMenu": [
-            [10, 25, 50, -1],
-            [10, 25, 50, "All"]
+    $('#sum-report').DataTable({
+        buttons: [
+          'copyHtml5',
+          'excelHtml5',
+          'csvHtml5',
+          'pdfHtml5'
         ],
-        responsive: true,
-        language: {
-            search: "_INPUT_",
-            searchPlaceholder: "Search records",
-        }
+        "aaSorting": [],
+        "paging": false,
+        "info": false,
+        "bFilter": false
+    });
 
+    $('#seperate-report').DataTable({
+        buttons: [
+          'copyHtml5',
+          'excelHtml5',
+          'csvHtml5',
+          'pdfHtml5'
+        ],
+        "aaSorting": [],
+        "paging": false,
+        "info": false,
+        "bFilter": false
     });
 
     $('.selectpicker').selectpicker();
+  }
 
+  submitSearch() {
+    this.showReport = this.reportType;
+    console.log(this.showReport);
+  }
 
-    // var table = $('#datatables').DataTable();
-
-    // // Edit record
-    // table.on('click', '.edit', function() {
-    //     $tr = $(this).closest('tr');
-
-    //     var data = table.row($tr).data();
-    //     alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
-    // });
-
-    // // Delete a record
-    // table.on('click', '.remove', function(e) {
-    //     $tr = $(this).closest('tr');
-    //     table.row($tr).remove().draw();
-    //     e.preventDefault();
-    // });
-
-    // //Like record
-    // table.on('click', '.like', function() {
-    //     alert('You clicked on Like button');
-    // });
-
-    // $('.card .material-datatables label').addClass('form-group');
-
+  randomNumber() {
+    return Math.round(Math.random() * 10);
   }
 
 }
