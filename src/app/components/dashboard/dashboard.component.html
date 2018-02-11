@@ -13,7 +13,11 @@
                         </div>
                         <div class="market-row" *ngFor="let row of rows">
                             <div class="market-label">{{row}}</div>
-                            <div class="market-position" *ngFor="let col of cols"></div>
+                            <div class="market-position" 
+                                 *ngFor="let col of cols"
+                                 [ngClass]="{'hilight-meat': shopsMap[col+row]!=null}">
+                                 {{col+row}}
+                            </div>
                         </div>
                     </div>
                 </div>

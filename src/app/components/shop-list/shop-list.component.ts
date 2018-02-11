@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ShopDetail } from '../../model/shop-detail';
 
 declare var $: any;
+declare var firebase: any;
 
 @Component({
   selector: 'app-shop-list',
@@ -16,6 +18,7 @@ export class ShopListComponent implements OnInit {
   showNumberOfShop = false;
   datatable;
   shopID;
+  shops = new Array();
 
   constructor(private router: ActivatedRoute) {
     const sub = this.router.params
@@ -28,6 +31,16 @@ export class ShopListComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    const db = firebase.firestore();
+    let shopDetail: ShopDetail;
+    db.collection('shop-details').get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        shopDetail = doc.data();
+        this.shops.push(shopDetail);
+      });
+      console.log(this.shops);
+    });
+
     this.datatable = $('#shoplist-datatables').DataTable();
     this.refreshTable();
   }

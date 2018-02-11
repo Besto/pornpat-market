@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ShopDetail } from '../../model/shop-detail';
+
+declare var firebase: any;
 
 @Component({
   selector: 'app-dashboard',
@@ -9,6 +12,7 @@ export class DashboardComponent implements OnInit {
 
   rows = new Array();
   cols = new Array();
+  shopsMap = {};
 
   constructor() { }
 
@@ -21,6 +25,18 @@ export class DashboardComponent implements OnInit {
     for (let i = 1; i < 10; i++) {
       this.rows.push(i);
     }
+  }
+
+  ngAfterViewInit() {
+    const db = firebase.firestore();
+    let shopDetail: ShopDetail;
+    db.collection('shop-details').get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        shopDetail = doc.data();
+        this.shopsMap[shopDetail.position.column + shopDetail.position.row] = shopDetail;
+      });
+      console.log(this.shopsMap);
+    });
   }
 
 }

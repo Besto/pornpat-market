@@ -3,18 +3,18 @@
         <label class="col-md-1 label-on-left" style="padding-top: 19px;">สถานะ</label>
         <div class="col-lg-2 col-md-6 col-sm-2">
             <select class="selectpicker" data-style="btn btn-primary btn-round" title="Single Select" data-size="7">
-                <option value="total" selected>ทั้งหมด</option>
-                <option value="normal">ปกติ</option>
-                <option value="owe">ค้างชำระ</option>
-                <option value="stop">เลิกขาย</option>                                                                   
+                <option value="" selected>ทั้งหมด</option>
+                <option value="ปกติ">ปกติ</option>
+                <option value="ค้างชำระ">ค้างชำระ</option>
+                <option value="เลิกขาย">เลิกขาย</option>                                                                   
             </select> 
         </div>                    
         <label class="col-md-2" style="padding-top: 19px;">ประเภทแผง</label>
         <div class="col-lg-2 col-md-6 col-sm-2">
             <select class="selectpicker" data-style="btn btn-primary btn-round" title="Single Select" data-size="7">
                 <option value="" selected>-</option>
-                <option value="rent">เช่า</option>
-                <option value="sell_out">เซ้ง</option>                                                                     
+                <option value="เช่า">เช่า</option>
+                <option value="เซ้ง">เซ้ง</option>                                                                     
             </select> 
         </div>
         <label class="col-md-1" style="padding-top: 19px;">สินค้า</label>
@@ -88,15 +88,15 @@
             </tr>
         </thead>                        
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Pipat Ngam</td>
-                <td>เนื้อหมู</td>
-                <td>เช่า</td>
-                <td>105-106 ถ. รองเมือง</td>
-                <td>087-363-2812</td>
-                <td>รถเข็น</td>
-                <td>2</td>
+            <tr *ngFor="let shop of shops">
+                <td>{{shop.id}}</td>
+                <td>{{shop.firstname}} {{shop.lastname}}</td>
+                <td>{{shop.product}}</td>
+                <td>{{shop.type}}</td>
+                <td>{{shop.address}}</td>
+                <td>{{shop.tel}}</td>
+                <td>{{shop.storage}}</td>
+                <td>{{shop.amount}}</td>
                 <td class="td-actions text-right">                                    
                     <button type="button" rel="tooltip" class="btn btn-success" data-original-title="" title="" (click)="showShopDetail(1)">
                         <i class="material-icons">edit</i>

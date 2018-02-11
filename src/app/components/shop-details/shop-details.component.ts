@@ -22,6 +22,8 @@ export class ShopDetailsComponent implements OnInit {
       status: new FormControl(),
       firstname: new FormControl(),
       lastname: new FormControl(),
+      type: new FormControl(),
+      amount: new FormControl(),
       category: new FormControl(),
       product: new FormControl(),
       address: new FormControl(),
@@ -41,6 +43,7 @@ export class ShopDetailsComponent implements OnInit {
     const shopDetail = this.shopDetailForm.value;
     console.log(shopDetail);
     this.saveToFirebaseDB('shop-details', shopDetail);
+    alert('save successful');
   }
 
   saveToFirebaseDB(collection, object) {

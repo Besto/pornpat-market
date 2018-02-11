@@ -3,9 +3,9 @@ export class ShopDetail {
     status: string;
     firstname: string;
     lastname: string;
-    category: string;
+    type: string;
     amount: string;
-    group: string;
+    category: string;
     product: string;
     address: string;
     tel: string;
